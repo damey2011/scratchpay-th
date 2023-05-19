@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "moduleResolution": "node",
+        "declaration": true,
+        "pretty": true,
+        "noEmitOnError": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "module": "commonjs",
+        "baseUrl": "./",
+        "paths": {},
+        "outDir": "./build",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "skipLibCheck": true,
+        "newLine": "lf",
+        "noUnusedLocals": true,
+        "noFallthroughCasesInSwitch": true,
+        "useDefineForClassFields": true,
+        "lib": ["esnext"]
+    }
+}

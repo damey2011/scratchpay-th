@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: app-dev
+            args:
+                DOCKER_BUILDKIT: 1
+        volumes:
+            - ./:/usr/app/
+            - ~/.aws/:/root/.aws:ro
+        ports:
+            - "8080:8080"
+        env_file:
+            - ./.env
+        environment:
+            - ENV=dev
+            - APP_PORT=8080
