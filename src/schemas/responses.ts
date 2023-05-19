@@ -11,7 +11,7 @@ export const ClinicSchema =  Type.Object({
 })
 export const ClinicResultResponseSchema = Type.Object({
     results: Type.Array(ClinicSchema),
-    nextCursor: Type.Number(),
+    nextCursor: Type.Union([Type.Number(), Type.Null()]),
     pageSize: Type.Number(),
 })
 

@@ -23,7 +23,7 @@ export default FastifyPlugin(async (
             const clinics = await findClinic(queryParams)
             return {
                 results: clinics.clinics,
-                nextCursor: clinics.endCursor + 1,
+                nextCursor: clinics.endCursor ? clinics.endCursor + 1 : null,
                 pageSize: (queryParams.pageSize ?? config.DEFAULT_PAGE_SIZE) as number
             }
         },

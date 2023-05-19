@@ -59,7 +59,7 @@ at http://0.0.0.0:8080/docs once you are able to get the server running.
 - Write more unit / integration tests and with more data generated using fakerjs.
 - Linting and formatting
 - Precommit hooks to avoid committing untested code
-- Configure Gitlab CI for CI/CD
+- Configure Gitlab CI for CI/CD for lint checking, tests, coverage etc.
 
 
 ### Assumptions

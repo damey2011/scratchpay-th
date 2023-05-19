@@ -96,7 +96,7 @@ export const findClinic = async <C>(
 ): Promise<{
     total: number,
     clinics: Clinic[],
-    endCursor: number
+    endCursor: number | null
 }> => {
     const streams = await mergeStreams(
         supportedDataSources().map((datasource: string) => {
@@ -106,7 +106,6 @@ export const findClinic = async <C>(
 
     const readableStream = Readable.from(streams);
     const pageSize = filter?.pageSize ?? config.DEFAULT_PAGE_SIZE as number
-    let movingCursor = 0
     let endCursor = 0
     let total = 0
     const results: Clinic[] = []
@@ -117,7 +116,6 @@ export const findClinic = async <C>(
             parser({jsonStreaming: true}),
             streamArray(),
             (data: any): Clinic | null => {
-                movingCursor = data.key
                 // Do not process if does not match pagination parameters
                 if (data.key < (filter?.cursor ?? 0) || endCursor) return null
                 const transformedClinic = transformClinicObject(data.value);
@@ -135,7 +133,7 @@ export const findClinic = async <C>(
             if (endCursor) pipeline.end()
         });
         pipeline.on('end', () => res({
-            endCursor: endCursor ?? movingCursor,
+            endCursor: endCursor ?? null,
             total,
             clinics: results
         }))

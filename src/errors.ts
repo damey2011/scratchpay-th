@@ -5,4 +5,4 @@ export enum ErrorCode {
     SCHEMA_VALIDATION_ERROR= "SCHEMA_VALIDATION_ERROR",
 }
 
-export const QueryValidationError = createError(ErrorCode.SCHEMA_VALIDATION_ERROR, "%s", 400);
+export const QueryValidationError = createError(ErrorCode.SCHEMA_VALIDATION_ERROR, "%s", 422);
